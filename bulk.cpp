@@ -70,7 +70,7 @@ public:
 
     void ProcessCommand(const Command& command) override {
         std::ofstream file(GetFilename(command), std::ofstream::out);
-        file << command.Text << "\n";
+        file << command.Text;
         // wait
         sleep(1);
 
@@ -136,7 +136,7 @@ private:
         std::stringstream ss;
         for(size_t i = 0; i < v.size(); ++i) {
             if(i != 0)
-                ss << ", ";
+                ss << ",\n";
             ss << v[i].Text;
         }
         return ss.str();
