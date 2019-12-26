@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <unistd.h>
 
 struct Command {
     std::string Text;
@@ -69,8 +70,9 @@ public:
 
     void ProcessCommand(const Command& command) override {
         std::ofstream file(GetFilename(command), std::ofstream::out);
-        file << command.Text;
-        for(int i=0; i<10'000'000; ++i) ;
+        file << command.Text << "\n";
+        // wait
+        sleep(1);
 
 
         if (mNextCommandProcessor)
