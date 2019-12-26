@@ -70,6 +70,8 @@ public:
     void ProcessCommand(const Command& command) override {
         std::ofstream file(GetFilename(command), std::ofstream::out);
         file << command.Text;
+        for(int i=0; i<10'000'000; ++i) ;
+
 
         if (mNextCommandProcessor)
             mNextCommandProcessor->ProcessCommand(command);
